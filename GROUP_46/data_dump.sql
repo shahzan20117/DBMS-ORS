@@ -7,13 +7,64 @@
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8mb4 */;
+/*!50503 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Temporary view structure for view `Product_Reviews`
+--
+
+DROP TABLE IF EXISTS `Product_Reviews`;
+/*!50001 DROP VIEW IF EXISTS `Product_Reviews`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `Product_Reviews` AS SELECT 
+ 1 AS `first_name`,
+ 1 AS `last_name`,
+ 1 AS `review_comment`,
+ 1 AS `rating`,
+ 1 AS `review_date`,
+ 1 AS `seller_id`,
+ 1 AS `product_id`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `Quantity_Of_product_On_Sale`
+--
+
+DROP TABLE IF EXISTS `Quantity_Of_product_On_Sale`;
+/*!50001 DROP VIEW IF EXISTS `Quantity_Of_product_On_Sale`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `Quantity_Of_product_On_Sale` AS SELECT 
+ 1 AS `product_id`,
+ 1 AS `quantity_available`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `Seller_Sales`
+--
+
+DROP TABLE IF EXISTS `Seller_Sales`;
+/*!50001 DROP VIEW IF EXISTS `Seller_Sales`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `Seller_Sales` AS SELECT 
+ 1 AS `seller_id`,
+ 1 AS `final_cost`,
+ 1 AS `delivery_status`,
+ 1 AS `return_status`,
+ 1 AS `orders_quantity`,
+ 1 AS `city`,
+ 1 AS `payment_method`,
+ 1 AS `place_status`,
+ 1 AS `orders_date`*/;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `belongTo`
@@ -114,9 +165,76 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (1,'true','true',NULL,1,'WALLET',1,'2021-09-12','2068373568','R S','India','34756 Pawling Junction','Gujarat',395003,6,1,1,1,'2021-10-12'),(3,'true','false','ONGOING',3,'WALLET',3,'2022-01-30','7485472564','Agraharam','India','7 Memorial Road','Andhra Pradesh',532663,3,3,3,3,NULL),(4,'true','false','ACCEPTED',4,'WALLET',4,'2021-10-01','1189850885','Sadar Bazar','India','20037 Southridge Road','Uttar Pradesh',281002,4,4,4,4,NULL),(5,'true','true','REJECTED',5,'WALLET',5,'2021-03-31','2179948895','Sadar Bazar','India','864 Schmedeman Crossing','Uttar Pradesh',281002,5,5,5,5,'2021-08-07'),(6,'true','true',NULL,7,'COD',456,'2020-03-25','1179848595','New Delhi','India','Kondli bazar street-15','Delhi',110094,8,3,9,9,'2022-01-15'),(7,'true','true',NULL,3,'WALLET',787,'2020-08-20','1169808594','Amritsar','India','234-C angel colony ','Punjab',143001,13,7,15,15,'2021-08-20'),(8,'true','true',NULL,14,'WALLET',1065,'2020-11-17','2269508504','Srinagar','India','Tengpora Batamaloo','Jammu and Kashmir',191131,13,7,15,15,'2021-11-17'),(9,'true','true',NULL,14,'WALLET',7656,'2017-11-17','6068615747','RS','India','390 Norway Maple Street','Gujarat',395003,10,4,4,4,NULL);
+INSERT INTO `orders` VALUES (1,'true','true','ACCEPTED',1,'WALLET',1,'2021-09-12','2068373568','R S','India','34756 Pawling Junction','Gujarat',395003,6,1,1,1,'2021-10-12'),(3,'true','false','ONGOING',3,'COD',3,'2022-01-30','7485472564','Agraharam','India','7 Memorial Road','Andhra Pradesh',532663,3,3,3,3,NULL),(4,'true','false','ACCEPTED',4,'WALLET',4,'2021-10-01','1189850885','Sadar Bazar','India','20037 Southridge Road','Uttar Pradesh',281002,4,4,4,4,NULL),(5,'true','true','REJECTED',5,'WALLET',5,'2021-03-31','2179948895','Sadar Bazar','India','864 Schmedeman Crossing','Uttar Pradesh',281002,5,5,5,5,'2021-08-07'),(6,'true','true',NULL,7,'COD',456,'2020-03-25','1179848595','New Delhi','India','Kondli bazar street-15','Delhi',110094,8,3,9,9,'2022-01-15'),(7,'true','true',NULL,3,'WALLET',787,'2020-08-20','1169808594','Amritsar','India','234-C angel colony ','Punjab',143001,13,7,15,15,'2021-08-20'),(8,'true','true',NULL,14,'WALLET',1065,'2020-11-17','2269508504','Srinagar','India','Tengpora Batamaloo','Jammu and Kashmir',191131,13,7,15,15,'2021-11-17'),(9,'true','true',NULL,14,'WALLET',7656,'2017-11-17','6068615747','RS','India','390 Norway Maple Street','Gujarat',395003,10,4,4,4,NULL);
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `place_order` BEFORE UPDATE ON `orders` FOR EACH ROW BEGIN
+	IF old.place_status = "false" AND new.place_status = "true" THEN 
+		UPDATE sells SET sells.selling_quantity = sells.selling_quantity - new.orders_quantity WHERE sells.product_id = new.product_id AND sells.seller_id = new.seller_id;
+	END IF;
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `cancel_return` BEFORE UPDATE ON `orders` FOR EACH ROW BEGIN
+	##if calcels the order in transit (the cancel request is accepted immediately and the order is sent back to the seller)
+	IF OLD.place_status = "true" AND OLD.delivery_status = "false" AND OLD.return_status = NULL AND NEW.return_status = "ACCEPPTED" THEN
+		UPDATE sells SET selling_quantity = selling_quantity + NEW.orders_quantity;
+	##if returns the order after delivery and the return request is accepted(i.e. delivery boy confirmes that the product is in good shape)
+    ELSEIF OLD.place_status = "true" AND OLD.delivery_status = "true" AND OLD.return_status = "ONGOING" AND NEW.return_status = "ACCEPTED" THEN
+		UPDATE sells SET selling_quantity = selling_quantity + NEW.orders_quantity WHERE sells.product_id = NEW.product_id AND sells.seller_id = NEW.seller_id ;
+	END IF;
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+
+--
+-- Temporary view structure for view `orders_Info_For_shippingAgent`
+--
+
+DROP TABLE IF EXISTS `orders_Info_For_shippingAgent`;
+/*!50001 DROP VIEW IF EXISTS `orders_Info_For_shippingAgent`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `orders_Info_For_shippingAgent` AS SELECT 
+ 1 AS `agent_id`,
+ 1 AS `place_status`,
+ 1 AS `delivery_status`,
+ 1 AS `return_status`,
+ 1 AS `payment_method`,
+ 1 AS `final_cost`,
+ 1 AS `orders_date`,
+ 1 AS `phone`,
+ 1 AS `city`,
+ 1 AS `country`,
+ 1 AS `address_line`,
+ 1 AS `state`,
+ 1 AS `pin_code`,
+ 1 AS `delivery_date`*/;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `product`
@@ -165,6 +283,38 @@ LOCK TABLES `productCategory` WRITE;
 INSERT INTO `productCategory` VALUES ('Electronics'),('Food'),('Home'),('Kitchen'),('Office');
 /*!40000 ALTER TABLE `productCategory` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Temporary view structure for view `product_page_For_customer`
+--
+
+DROP TABLE IF EXISTS `product_page_For_customer`;
+/*!50001 DROP VIEW IF EXISTS `product_page_For_customer`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `product_page_For_customer` AS SELECT 
+ 1 AS `product_id`,
+ 1 AS `product_name`,
+ 1 AS `selling_cost`,
+ 1 AS `avg_rating`,
+ 1 AS `discount`,
+ 1 AS `selling_quantity`,
+ 1 AS `seller_name`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `products_Of_subCategory`
+--
+
+DROP TABLE IF EXISTS `products_Of_subCategory`;
+/*!50001 DROP VIEW IF EXISTS `products_Of_subCategory`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `products_Of_subCategory` AS SELECT 
+ 1 AS `sub_category`,
+ 1 AS `product_name`,
+ 1 AS `curr_status`*/;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `review`
@@ -256,7 +406,7 @@ CREATE TABLE `sells` (
 
 LOCK TABLES `sells` WRITE;
 /*!40000 ALTER TABLE `sells` DISABLE KEYS */;
-INSERT INTO `sells` VALUES (1,1,105,1.0,0,0.00),(2,2,283,0.0,0,0.00),(3,3,338,0.0,3,0.60),(5,5,527,2.0,5,0.50),(7,7,739,0.0,7,0.70),(8,8,893,0.0,8,0.00),(9,9,9983,4.0,9,0.00),(10,10,1098,0.0,10,0.00),(11,11,105,0.0,0,0.00),(12,12,283,0.0,4,0.00),(13,13,338,0.0,0,0.60),(14,14,438,0.0,9,0.00),(15,15,527,2.5,5,0.50),(16,16,6934,0.0,0,0.00),(18,18,893,0.0,8,0.00),(19,19,9983,0.0,0,0.00),(20,20,1098,0.0,10,0.00);
+INSERT INTO `sells` VALUES (1,1,105,1.0,1,0.00),(2,2,283,0.0,0,0.00),(3,3,338,0.0,0,0.50),(5,5,527,2.0,5,0.50),(7,7,739,0.0,7,0.70),(8,8,893,0.0,8,0.00),(9,9,9983,4.0,9,0.00),(10,10,1098,0.0,10,0.00),(11,11,105,0.0,0,0.00),(12,12,283,0.0,4,0.00),(13,13,338,0.0,0,0.60),(14,14,438,0.0,9,0.00),(15,15,527,2.5,5,0.50),(16,16,6934,0.0,0,0.00),(18,18,893,0.0,8,0.00),(19,19,9983,0.0,0,0.00),(20,20,1098,0.0,10,0.00);
 /*!40000 ALTER TABLE `sells` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -287,21 +437,6 @@ LOCK TABLES `shippingAgent` WRITE;
 INSERT INTO `shippingAgent` VALUES (1,'Champlin, Breitenberg and Pouros','rbirdis0@opera.com','WORKING','Ny96xoUiS4Ha','2793616367'),(2,'Schmitt, Hermiston and Grimes','jtownley1@ed.gov','NOT_WORKING','lnbrmK','3118483667'),(3,'Ryan-Prohaska','ddoole2@163.com','WORKING','zJV9Hqu52','8097503577'),(4,'O\'Keefe Group','mquennell3@unc.edu','WORKING','vy8Hw5WQos','2967583593'),(5,'Collins-Satterfield','bsire4@unesco.org','NOT_WORKING','sp7pog','6291140841'),(6,'Ferry, Aufderhar and Nikolaus','srodmell5@opera.com','NOT_WORKING','cyFQ3p4IDx','4682844620'),(7,'Oberbrunner, Grimes and Ullrich','odykes6@who.int','WORKING','aQ7et7nYAKS','5787017596'),(8,'Hyatt, Boehm and Douglas','bczapla7@usa.gov','WORKING','Jl4SI5','9111348299'),(9,'Schmitt and Sons','jbanthorpe8@blinklist.com','WORKING','UqK3KeTOlCdj','9987883909'),(10,'Moen, Ankunding and Schoen','vdarrigone9@yolasite.com','NOT_WORKING','18rjFu2ccTz7','7765273256');
 /*!40000 ALTER TABLE `shippingAgent` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Temporary view structure for view `shippingAgent_phone`
---
-
-DROP TABLE IF EXISTS `shippingAgent_phone`;
-/*!50001 DROP VIEW IF EXISTS `shippingAgent_phone`*/;
-SET @saved_cs_client     = @@character_set_client;
-/*!50503 SET character_set_client = utf8mb4 */;
-/*!50001 CREATE VIEW `shippingAgent_phone` AS SELECT 
- 1 AS `first_name`,
- 1 AS `last_name`,
- 1 AS `phone`,
- 1 AS `agent_name`*/;
-SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `shippingInfo`
@@ -361,10 +496,31 @@ INSERT INTO `subCategory` VALUES ('Television','Electronics'),('Breads','Food'),
 UNLOCK TABLES;
 
 --
--- Final view structure for view `shippingAgent_phone`
+-- Temporary view structure for view `subcategories_Of_Category`
 --
 
-/*!50001 DROP VIEW IF EXISTS `shippingAgent_phone`*/;
+DROP TABLE IF EXISTS `subcategories_Of_Category`;
+/*!50001 DROP VIEW IF EXISTS `subcategories_Of_Category`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `subcategories_Of_Category` AS SELECT 
+ 1 AS `sub_category`,
+ 1 AS `product_category`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping events for database 'ORS1'
+--
+
+--
+-- Dumping routines for database 'ORS1'
+--
+
+--
+-- Final view structure for view `Product_Reviews`
+--
+
+/*!50001 DROP VIEW IF EXISTS `Product_Reviews`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;
@@ -373,7 +529,115 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `shippingAgent_phone` AS select `customer`.`first_name` AS `first_name`,`customer`.`last_name` AS `last_name`,`shippingAgent`.`phone` AS `phone`,`shippingAgent`.`agent_name` AS `agent_name` from ((`customer` join `orders`) join `shippingAgent`) where ((`customer`.`customer_id` = `orders`.`customer_id`) and (`orders`.`agent_id` = `shippingAgent`.`agent_id`) and (`orders`.`delivery_status` = 'false') and (`orders`.`place_status` = 'true')) */;
+/*!50001 VIEW `Product_Reviews` AS select `customer`.`first_name` AS `first_name`,`customer`.`last_name` AS `last_name`,`review`.`review_comment` AS `review_comment`,`review`.`rating` AS `rating`,`review`.`review_date` AS `review_date`,`sells`.`seller_id` AS `seller_id`,`sells`.`product_id` AS `product_id` from ((`customer` join `review`) join `sells`) where ((`customer`.`customer_id` = `review`.`customer_id`) and (`review`.`product_id` = `sells`.`product_id`) and (`review`.`seller_id` = `sells`.`seller_id`)) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `Quantity_Of_product_On_Sale`
+--
+
+/*!50001 DROP VIEW IF EXISTS `Quantity_Of_product_On_Sale`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `Quantity_Of_product_On_Sale` AS select `sells`.`product_id` AS `product_id`,sum(`sells`.`selling_quantity`) AS `quantity_available` from `sells` group by `sells`.`product_id` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `Seller_Sales`
+--
+
+/*!50001 DROP VIEW IF EXISTS `Seller_Sales`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `Seller_Sales` AS select `orders`.`seller_id` AS `seller_id`,`orders`.`final_cost` AS `final_cost`,`orders`.`delivery_status` AS `delivery_status`,`orders`.`return_status` AS `return_status`,`orders`.`orders_quantity` AS `orders_quantity`,`orders`.`city` AS `city`,`orders`.`payment_method` AS `payment_method`,`orders`.`place_status` AS `place_status`,`orders`.`orders_date` AS `orders_date` from `orders` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `orders_Info_For_shippingAgent`
+--
+
+/*!50001 DROP VIEW IF EXISTS `orders_Info_For_shippingAgent`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `orders_Info_For_shippingAgent` AS select `orders`.`agent_id` AS `agent_id`,`orders`.`place_status` AS `place_status`,`orders`.`delivery_status` AS `delivery_status`,`orders`.`return_status` AS `return_status`,`orders`.`payment_method` AS `payment_method`,`orders`.`final_cost` AS `final_cost`,`orders`.`orders_date` AS `orders_date`,`orders`.`phone` AS `phone`,`orders`.`city` AS `city`,`orders`.`country` AS `country`,`orders`.`address_line` AS `address_line`,`orders`.`state` AS `state`,`orders`.`pin_code` AS `pin_code`,`orders`.`delivery_date` AS `delivery_date` from `orders` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `product_page_For_customer`
+--
+
+/*!50001 DROP VIEW IF EXISTS `product_page_For_customer`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `product_page_For_customer` AS select `product`.`product_id` AS `product_id`,`product`.`product_name` AS `product_name`,`sells`.`selling_cost` AS `selling_cost`,`sells`.`avg_rating` AS `avg_rating`,`sells`.`discount` AS `discount`,`sells`.`selling_quantity` AS `selling_quantity`,`seller`.`seller_name` AS `seller_name` from ((`product` join `sells`) join `seller`) where ((`product`.`product_id` = `sells`.`product_id`) and (`sells`.`seller_id` = `seller`.`seller_id`)) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `products_Of_subCategory`
+--
+
+/*!50001 DROP VIEW IF EXISTS `products_Of_subCategory`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `products_Of_subCategory` AS select `subCategory`.`sub_category` AS `sub_category`,`product`.`product_name` AS `product_name`,`product`.`curr_status` AS `curr_status` from ((`product` join `belongTo`) join `subCategory`) where ((`product`.`product_id` = `belongTo`.`product_id`) and (`belongTo`.`sub_category` = `subCategory`.`sub_category`)) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `subcategories_Of_Category`
+--
+
+/*!50001 DROP VIEW IF EXISTS `subcategories_Of_Category`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `subcategories_Of_Category` AS select `subCategory`.`sub_category` AS `sub_category`,`subCategory`.`product_category` AS `product_category` from `subCategory` */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -387,4 +651,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-01 22:35:42
+-- Dump completed on 2022-04-15 18:14:29
