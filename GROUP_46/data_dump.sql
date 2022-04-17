@@ -116,7 +116,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (2,'Delinda','Noades',50,'YFa0EV51n7Ji'),(3,'Muhammad','Brunstan',47,'NJmd8z'),(4,'Lacy','Scotchmur',4745,'aQ1zwDL'),(5,'Konstantin','Carreck',84,'B7Q8zZlPtUf'),(6,'Ines','Llewelyn',1928,'hrNuFIZNg'),(7,'Trueman','Beneyto',376,'utlHeD6GIos1'),(8,'Hewe','Karran',746,'oNWKKvEb'),(9,'Eden','Dorward',938,'JORHJu9UvN'),(10,'Uri','Davidovsky',238,'H59VSSfxB'),(11,'Wolfie','Plows',1928,'JBVShisPSvZS'),(12,'Mariele','Bonham',833,'ZBRX31'),(13,'Elfreda','Weins',382,'9kLx7A'),(14,'Oberon','Parlot',9238,'OSNvVZhQR4'),(15,'Gage','Megainey',839,'QCsGOzj1b'),(16,'Calypso','Ornils',0,'ZXOPXGpNK'),(17,'Kathleen','Librey',0,'7mYu1pXW1'),(18,'Loretta','Sowersby',98,'jlHHIo'),(19,'Idalina','Dwane',8262,'XDb3lJCuauRO'),(20,'Douglas','Keward',83,'4K9JIHL');
+INSERT INTO `customer` VALUES (2,'Delinda','Noades',50,'YFa0EV51n7Ji'),(3,'Muhammad','Brunstan',47,'NJmd8z'),(4,'Lacy','Scotchmur',4745,'aQ1zwDL'),(5,'Konstantin','Carreck',84,'B7Q8zZlPtUf'),(6,'Ines','Llewelyn',1928,'hrNuFIZNg'),(7,'Trueman','Beneyto',376,'utlHeD6GIos1'),(8,'Hewe','Karran',746,'oNWKKvEb'),(9,'Eden','Dorward',938,'JORHJu9UvN'),(10,'Uri','Davidovsky',238,'H59VSSfxB'),(11,'Wolfie','Plows',1928,'JBVShisPSvZS'),(12,'Mariele','Bonham',833,'ZBRX31'),(13,'Elfreda','Weins',382,'9kLx7A'),(14,'Oberon','Parlot',9238,'OSNvVZhQR4'),(15,'Gage','Megainey',839,'QCsGOzj1b'),(16,'Calypso','Ornils',0,'ZXOPXGpNK'),(17,'Kathleen','Librey',0,'7mYu1pXW1'),(18,'Loretta','Sowersby',98,'jlHHIo'),(19,'Idalina','Dwane',8262,'XDb3lJCuauRO'),(20,'Douglas','Keward',83,'4K9JIHL'),(45,'sdhkj','kbscj',0,'ldsvn'),(70,'s','dd',0,'ddd'),(75,'huyt','hjui',0,'password'),(77,'divyansh','singh',0,'hoog booga boo'),(78,'divyansh','singh',0,'tommy'),(79,'dd','ddd',0,'ddd'),(80,'shahzan','ahmad',0,'hunga bunga'),(81,'anas','ahmad',0,'hunga bunga'),(99,'yui','opi',0,'sdafjkb'),(123,'abc','def',0,'ghi'),(1234,'hg','ahsfd',0,'safdhjk');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -220,6 +220,8 @@ DROP TABLE IF EXISTS `orders_Info_For_shippingAgent`;
 SET @saved_cs_client     = @@character_set_client;
 /*!50503 SET character_set_client = utf8mb4 */;
 /*!50001 CREATE VIEW `orders_Info_For_shippingAgent` AS SELECT 
+ 1 AS `first_name`,
+ 1 AS `last_name`,
  1 AS `agent_id`,
  1 AS `place_status`,
  1 AS `delivery_status`,
@@ -350,6 +352,24 @@ LOCK TABLES `review` WRITE;
 INSERT INTO `review` VALUES (1,1,'Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.','2021-11-22',6,1,1),(2,2,'Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.','2021-11-07',5,5,5),(4,2,'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.','2022-02-18',13,15,15),(5,3,'Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.','2022-02-16',13,15,15),(6,4,'Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.','2022-02-15',8,9,9);
 /*!40000 ALTER TABLE `review` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Temporary view structure for view `reviews_for_seller_product`
+--
+
+DROP TABLE IF EXISTS `reviews_for_seller_product`;
+/*!50001 DROP VIEW IF EXISTS `reviews_for_seller_product`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `reviews_for_seller_product` AS SELECT 
+ 1 AS `first_name`,
+ 1 AS `last_name`,
+ 1 AS `product_id`,
+ 1 AS `seller_id`,
+ 1 AS `rating`,
+ 1 AS `review_comment`,
+ 1 AS `review_date`*/;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `seller`
@@ -583,7 +603,7 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `orders_Info_For_shippingAgent` AS select `orders`.`agent_id` AS `agent_id`,`orders`.`place_status` AS `place_status`,`orders`.`delivery_status` AS `delivery_status`,`orders`.`return_status` AS `return_status`,`orders`.`payment_method` AS `payment_method`,`orders`.`final_cost` AS `final_cost`,`orders`.`orders_date` AS `orders_date`,`orders`.`phone` AS `phone`,`orders`.`city` AS `city`,`orders`.`country` AS `country`,`orders`.`address_line` AS `address_line`,`orders`.`state` AS `state`,`orders`.`pin_code` AS `pin_code`,`orders`.`delivery_date` AS `delivery_date` from `orders` */;
+/*!50001 VIEW `orders_Info_For_shippingAgent` AS select `customer`.`first_name` AS `first_name`,`customer`.`last_name` AS `last_name`,`orders`.`agent_id` AS `agent_id`,`orders`.`place_status` AS `place_status`,`orders`.`delivery_status` AS `delivery_status`,`orders`.`return_status` AS `return_status`,`orders`.`payment_method` AS `payment_method`,`orders`.`final_cost` AS `final_cost`,`orders`.`orders_date` AS `orders_date`,`orders`.`phone` AS `phone`,`orders`.`city` AS `city`,`orders`.`country` AS `country`,`orders`.`address_line` AS `address_line`,`orders`.`state` AS `state`,`orders`.`pin_code` AS `pin_code`,`orders`.`delivery_date` AS `delivery_date` from (`orders` join `customer`) where (`customer`.`customer_id` = `orders`.`orders_id`) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -625,6 +645,24 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
+-- Final view structure for view `reviews_for_seller_product`
+--
+
+/*!50001 DROP VIEW IF EXISTS `reviews_for_seller_product`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `reviews_for_seller_product` AS select `customer`.`first_name` AS `first_name`,`customer`.`last_name` AS `last_name`,`review`.`product_id` AS `product_id`,`review`.`seller_id` AS `seller_id`,`review`.`rating` AS `rating`,`review`.`review_comment` AS `review_comment`,`review`.`review_date` AS `review_date` from (`review` join `customer`) where (`customer`.`customer_id` = `review`.`customer_id`) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
 -- Final view structure for view `subcategories_Of_Category`
 --
 
@@ -651,4 +689,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-15 18:14:29
+-- Dump completed on 2022-04-17 21:25:31
