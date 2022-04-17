@@ -7,6 +7,10 @@ dba = mysql.connector.connect(host = "localhost", user = "root", passwd = "Hitsu
 def confirm_customer_login(Logi_page, id, password):
     if (id == "" or password == ""):
         messageBox.showinfo("error", "must fill all the fields")
+    elif (not id.isdigit()):
+        messageBox.showinfo("error", "ids can only be numbers")
+    elif (len(id) != len(str(int(id)))):
+        messageBox.showinfo("error", "ids cannot have leading zeroes")
     else:
         cursor = dba.cursor()
         cursor.execute("SELECT customer_id, customer_password FROM customer")
@@ -22,6 +26,12 @@ def confirm_customer_login(Logi_page, id, password):
 def register_customer_account(Register_page, first_name, last_name, password, id):
     if (first_name == "" or last_name == "" or password == "" or id == ""):
         messageBox.showinfo("error", "must fill all the fields")
+    elif (not id.isdigit()):
+        messageBox.showinfo("error", "id must be numeric")
+    elif (len(id) != len(str(int(id)))):
+        messageBox.showinfo("error", "no leading zeroes allowed in id")
+
+
     else:
         int_id = int(id)
         cursor = dba.cursor()
