@@ -223,7 +223,7 @@ def go_to_seller_login_page(Loin_Register_page):
 
     Login_page.mainloop()
     
-
+pass
 
 
 
