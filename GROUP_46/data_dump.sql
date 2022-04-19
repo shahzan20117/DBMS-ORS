@@ -282,7 +282,7 @@ CREATE TABLE `productCategory` (
 
 LOCK TABLES `productCategory` WRITE;
 /*!40000 ALTER TABLE `productCategory` DISABLE KEYS */;
-INSERT INTO `productCategory` VALUES ('Electronics'),('Food'),('Home'),('Kitchen'),('Office');
+INSERT INTO `productCategory` VALUES ('Electronics'),('Food'),('Home'),('Kitchen'),('Office'),('test_cat');
 /*!40000 ALTER TABLE `productCategory` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -689,4 +689,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-17 21:25:31
+-- Dump completed on 2022-04-19 21:34:18
