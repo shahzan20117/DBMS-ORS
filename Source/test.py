@@ -193,7 +193,8 @@ def go_to_seller_register_page(Loin_Register_page):
     seller_register_page.mainloop()
 
 def confirm_seller_login(seller_login_page, seller_id, seller_password):
-    
+    pass
+
 
 
 def go_to_seller_login_page(Loin_Register_page):
