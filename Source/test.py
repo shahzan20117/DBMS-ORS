@@ -3,6 +3,9 @@ import tkinter.messagebox as messageBox
 import mysql.connector
 
 dba = mysql.connector.connect(host = "localhost", user = "root", passwd = "Hitsugaya1@", database = "ORS1")
+# agent = mysql.connector.connect(host = "localhost",user = "agent",passwd = "Agent_pass1@", database = "ORS1")
+
+
 
 def confirm_customer_login(Logi_page, id, password):
     if (id == "" or password == ""):
@@ -152,19 +155,135 @@ def display_seller_homepage(choose_user_page):
 
     Loin_Register_page.mainloop()
 
+
+###############################################################################################
+def delete_agent_profile():
+    ### ................ Shahzan !!!
+
+
+###############################################################################################
+
+
+###############################################################################################
+# def agent_current_order():
+#     ### ................ Shahzan !!!
+
+
+###############################################################################################
+
+###################################################################################################
+def agent_post_profile(page_to_destroy):
+    page_to_destroy.destroy()
+    profile_page = Tk()
+    profile_page.title("Profile Page")
+    profile_page.geometry("800x600")
+    delete_account_button = Button(agent_post,text = "Profile",font = ("bold,15"),bg = "white",command = lambda:delete_agent_profile(profile_page))
+    edit_profile_or_logout_button = Button(agent_post,text = "Edit Profile Or Logout",font = ("bold,15"),bg = "white",command = lambda:agent_current_order(profile_page))
+
+
+
+###################################################################################################
+
+###################################################################################################
+def agent_current_order():
+
+
+###################################################################################################
+
+######################################################################################################
+
+def agent_post_page(somethinghere):
+    somethinghere.destroy()
+    agent_post = Tk()
+    agent_post.title("Agent Post Details")
+    agent_post.geometry("800x600")
+
+    profile_button = Button(agent_post,text = "Profile",font = ("bold,15"),bg = "white",command = lambda:agent_post_profile(agent_post,...))
+    current_orders_button = Button(agent_post,text = "Current Orders",font = ("bold,15"),bg = "white",command = lambda:agent_current_order(agent_post,...))
+
+    profile_button.place(x = 20,y=140)
+    current_orders_button.place(x = 20, 200)
+
+######################################################################################################
+
+#######################################################################################################
+
+def register_agent_account(register_agent_account_page,name,email,passwd,id,phone):
+    register_agent_account_page.destroy()
+    if (name == "" or email == "" or passwd == "" or id == "" or phone == ""):
+        messageBox.showinfo("error", "must fill all the fields")
+    elif (not id.isdigit()):
+        messageBox.showinfo("error", "id must be numeric")
+    elif (len(id) != len(str(int(id)))):
+        messageBox.showinfo("error", "no leading zeroes allowed in id")
+
+
+
+
+#######################################################################################################
+
+#######################################################################################################
+
+def go_to_agent_register_page(Loin_agent_Register_page):
+    Loin_agent_Register_page.destroy()
+    Register_page = Tk()
+    Register_page.title("Register page")
+    Register_page.geometry("800x600")
+    ## text for enter first name 
+    Enter_first_name = Label(Register_page, text = "Enter Agent Name", font = ("bold", 10))
+    Enter_first_name.place(x = 30, y = 40)
+    first_name_textbox = Entry()
+    first_name_textbox.place(x = 260, y = 40)
+
+    ## text for enter the email
+    Enter_email = Label(Register_page, text = "Email", font = ("bold", 10))
+    Enter_email.place(x = 30, y = 80)
+    email_textbox = Entry()
+    email_textbox.place(x = 260, y = 80)
+
+    ## text for enter password
+    Enter_password = Label(Register_page, text = "Enter password", font = ("bold", 10))
+    Enter_password.place(x = 30, y = 120)
+    password_textbox = Entry()
+    password_textbox.place(x = 260, y = 120)
+
+    ## text for enter id
+    Enter_id = Label(Register_page, text = "Enter Agent id", font = ("bold", 10))
+    Enter_id.place(x = 30, y = 160)
+    id_textbox = Entry()
+    id_textbox.place(x = 260, y = 160)
+
+    ## text for phone
+    phone = Label(Register_page, text = "Enter Phone No", font = ("bold", 10))
+    phone.place(x = 30, y = 200)
+    phone_textbox = Entry()
+    phone_textbox.place(x = 260, y = 200)
+
+    agent_register_button = Button(Register_page, text = "Register", font = ("bold, 15"), bg = "white", command = lambda : register_agent_account(Register_page, first_name_textbox.get(), email_textbox.get(), password_textbox.get(), id_textbox.get(), phone_textbox.get()))
+    agent_register_button.place(x = 200, y = 280)
+
+
+
+#################################################################################################################
+
+###################################################################
+
 def display_agent_homepage(choose_user_page):
     choose_user_page.destroy()
-    Loin_Register_page = Tk()
-    Loin_Register_page.title("Amazon ki copy")
-    Loin_Register_page.geometry("800x600")
+    Loin_agent_Register_page = Tk()
+    Loin_agent_Register_page.title("Amazon ki copy")
+    Loin_agent_Register_page.geometry("800x600")
 
-    Register_button = Button(Loin_Register_page, text = "Register", font = ("bold, 15"), bg = "white", command = lambda : go_to_register_page(Loin_Register_page))
-    Login_button = Button(Loin_Register_page, text = "Login", font = ("bold, 15"), bg = "white", command = lambda : go_to_login_page(Loin_Register_page))
+    Register_button = Button(Loin_agent_Register_page, text = "Register", font = ("bold, 15"), bg = "white", command = lambda : go_to_agent_register_page(Loin_agent_Register_page))
+    Login_button = Button(Loin_agent_Register_page, text = "Login", font = ("bold, 15"), bg = "white", command = lambda : go_to_agent_login_page(Loin_agent_Register_page))
 
     Login_button.place(x = 20, y = 140)
     Register_button.place(x = 20, y = 200)
 
-    Loin_Register_page.mainloop()
+    Loin_agent_Register_page.mainloop()
+
+####################################################################
+
 
 def display_choose_user_page():
     choose_user_page = Tk()
@@ -182,6 +301,4 @@ def display_choose_user_page():
     choose_user_page.mainloop()
 
 display_choose_user_page()
-
-
 
