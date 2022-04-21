@@ -2,9 +2,12 @@ from tkinter import *
 import tkinter.messagebox as messageBox
 import mysql.connector
 
+dba = mysql.connector.connect(host = "localhost", user = "root", passwd = "Hitsugaya1@", database = "ORS1")
+# agent = mysql.connector.connect(host = "localhost",user = "agent",passwd = "Agent_pass1@", database = "ORS1")
+seller = mysql.connector.connect(host = "localhost",user = "seller",passwd = "Seller_pass1@", database = "ORS1")
 
 
-def confirm_customer_login(dba, Logi_page, id, password):
+def confirm_customer_login(Logi_page, id, password):
     if (id == "" or password == ""):
         messageBox.showinfo("error", "must fill all the fields")
     elif (not id.isdigit()):
@@ -23,7 +26,7 @@ def confirm_customer_login(dba, Logi_page, id, password):
 
 
 
-def register_customer_account(dba, Register_page, first_name, last_name, password, id):
+def register_customer_account(Register_page, first_name, last_name, password, id):
     if (first_name == "" or last_name == "" or password == "" or id == ""):
         messageBox.showinfo("error", "must fill all the fields")
     elif (not id.isdigit()):
@@ -57,7 +60,7 @@ def register_customer_account(dba, Register_page, first_name, last_name, passwor
 
 
 
-def go_to_customer_register_page(dba, Loin_Register_page):
+def go_to_customer_register_page(Loin_Register_page):
     Loin_Register_page.destroy()
     Register_page = Tk()
     Register_page.title("Register page")
@@ -87,7 +90,7 @@ def go_to_customer_register_page(dba, Loin_Register_page):
     id_textbox.place(x = 260, y = 160)
 
     ## register button
-    Register_button = Button(Register_page, text = "Register", font = ("bold", 10), bg = "white", command = lambda: register_customer_account(dba, Register_page, first_name_textbox.get(), last_name_textbox.get(), password_textbox.get(), id_textbox.get()) )
+    Register_button = Button(Register_page, text = "Register", font = ("bold", 10), bg = "white", command = lambda: register_customer_account(Register_page, first_name_textbox.get(), last_name_textbox.get(), password_textbox.get(), id_textbox.get()) )
     Register_button.place(x = 200, y = 200)
 
 
@@ -116,34 +119,34 @@ def go_to_customer_login_page(Login_register_page):
     Enter_password_textbox.place(x = 260, y = 80)
 
     ## Login button
-    Login_button = Button(Login_page, text = "Login", font = ("bold", 10), bg = "white", command = lambda: confirm_customer_login(dba, Login_page, Enter_id_textbox.get(), Enter_password_textbox.get()))
+    Login_button = Button(Login_page, text = "Login", font = ("bold", 10), bg = "white", command = lambda: confirm_customer_login(Login_page, Enter_id_textbox.get(), Enter_password_textbox.get()))
     Login_button.place(x = 200, y = 200)
 
 
 
     Login_page.mainloop()
 
-def display_customer_Login_Register_page(dba, choose_user_page):
+def display_customer_Login_Register_page(choose_user_page):
     choose_user_page.destroy()
 
     Loin_Register_page = Tk()
     Loin_Register_page.title("Amazon ki copy")
     Loin_Register_page.geometry("800x600")
 
-    Register_button = Button(Loin_Register_page, text = "Register", font = ("bold, 15"), bg = "white", command = lambda : go_to_customer_register_page(dba, Loin_Register_page))
-    Login_button = Button(Loin_Register_page, text = "Login", font = ("bold, 15"), bg = "white", command = lambda : go_to_customer_login_page(dba, Loin_Register_page))
+    Register_button = Button(Loin_Register_page, text = "Register", font = ("bold, 15"), bg = "white", command = lambda : go_to_customer_register_page(Loin_Register_page))
+    Login_button = Button(Loin_Register_page, text = "Login", font = ("bold, 15"), bg = "white", command = lambda : go_to_customer_login_page(Loin_Register_page))
 
     Login_button.place(x = 20, y = 140)
     Register_button.place(x = 20, y = 200)
 
     Loin_Register_page.mainloop()
 
-def register_seller_account(dba, seller_register_page, seller_name, seller_email, seller_password, seller_phone, seller_id ):
+def register_seller_account(seller_register_page, seller_name, seller_email, seller_password, seller_phone, seller_id ):
     print("heyo")
 
 
 
-def go_to_seller_register_page(dba, Loin_Register_page):
+def go_to_seller_register_page(Loin_Register_page):
     Loin_Register_page.destroy()
     seller_register_page = Tk()
     seller_register_page.title("Amazon ki copy")
@@ -176,12 +179,12 @@ def go_to_seller_register_page(dba, Loin_Register_page):
 
     ## enter seller id
     Enter_id = Label(seller_register_page, text = "Enter id", font = ("bold", 10))
-    Enter_id.place(x = 30, y = 200)
+    Enter_id.place(x = 30, y = 160)
     id_textbox = Entry()
     id_textbox.place(x = 260, y = 200)
 
     ## register button
-    seller_Register_button = Button(seller_register_page, text = "Register", font = ("bold", 10), bg = "white", command = lambda: register_seller_account(dba, seller_register_page, seller_textbox.get(), Enter_email_textbox.get(), seller_password_textbox.get(), phone_textbox.get(), id_textbox.get() ) )
+    seller_Register_button = Button(seller_register_page, text = "Register", font = ("bold", 10), bg = "white", command = lambda: register_seller_account(seller_register_page, seller_textbox.get(), Enter_email_textbox.get(), seller_password_textbox.get(), phone_textbox.get(), id_textbox.get() ) )
     seller_Register_button.place(x = 200, y = 240)
 
 
@@ -189,12 +192,12 @@ def go_to_seller_register_page(dba, Loin_Register_page):
 
     seller_register_page.mainloop()
 
-def confirm_seller_login(dba, seller_login_page, seller_id, seller_password):
+def confirm_seller_login(seller_login_page, seller_id, seller_password):
     pass
 
 
 
-def go_to_seller_login_page(dba, Loin_Register_page):
+def go_to_seller_login_page(Loin_Register_page):
     Loin_Register_page.destroy()
     seller_login_page = Tk()
     seller_login_page.title("Amazon ki copy")
@@ -213,14 +216,13 @@ def go_to_seller_login_page(dba, Loin_Register_page):
     Enter_password_textbox.place(x = 260, y = 80)
 
     ## Login button
-    Login_button = Button(seller_login_page, text = "Login", font = ("bold", 10), bg = "white", command = lambda: confirm_seller_login(dba, seller_login_page, Enter_id_textbox.get(), Enter_password_textbox.get()))
+    Login_button = Button(seller_login_page, text = "Login", font = ("bold", 10), bg = "white", command = lambda: confirm_seller_login(seller_login_page, Enter_id_textbox.get(), Enter_password_textbox.get()))
     Login_button.place(x = 200, y = 200)
 
 
 
     Login_page.mainloop()
-
-
+    
 pass
 
 
@@ -230,14 +232,14 @@ pass
 
 
 
-def display_seller_Login_Register_page(dba, choose_user_page):
+def display_seller_Login_Register_page(choose_user_page):
     choose_user_page.destroy()
     Loin_Register_page = Tk()
     Loin_Register_page.title("Amazon ki copy")
     Loin_Register_page.geometry("800x600")
 
-    Register_button = Button(Loin_Register_page, text = "Register", font = ("bold, 15"), bg = "white", command = lambda : go_to_seller_register_page(dba, Loin_Register_page))
-    Login_button = Button(Loin_Register_page, text = "Login", font = ("bold, 15"), bg = "white", command = lambda : go_to_seller_login_page(dba, Loin_Register_page))
+    Register_button = Button(Loin_Register_page, text = "Register", font = ("bold, 15"), bg = "white", command = lambda : go_to_seller_register_page(Loin_Register_page))
+    Login_button = Button(Loin_Register_page, text = "Login", font = ("bold, 15"), bg = "white", command = lambda : go_to_seller_login_page(Loin_Register_page))
 
     Login_button.place(x = 20, y = 140)
     Register_button.place(x = 20, y = 200)
@@ -375,14 +377,14 @@ def display_seller_Login_Register_page(dba, choose_user_page):
 # ####################################################################
 
 
-def display_choose_user_page(dba):
+def display_choose_user_page():
     choose_user_page = Tk()
     choose_user_page.title("choose user")
     choose_user_page.geometry("800x600")
 
-    customer_button = Button(choose_user_page, text = "Customer", font = ("bold", 10), bg = "white", command = lambda : display_customer_Login_Register_page(dba, choose_user_page))
-    agent_button = Button(choose_user_page, text = "Shipping Agent", font = ("bold", 10), bg = "white", command = lambda : display_agent_homepage(dba, choose_user_page))
-    seler_page = Button(choose_user_page, text = "Seller", font = ("bold", 10), bg = "white", command = lambda : display_seller_Login_Register_page(dba, choose_user_page))
+    customer_button = Button(choose_user_page, text = "Customer", font = ("bold", 10), bg = "white", command = lambda : display_customer_Login_Register_page(choose_user_page))
+    agent_button = Button(choose_user_page, text = "Shipping Agent", font = ("bold", 10), bg = "white", command = lambda : display_agent_homepage(choose_user_page))
+    seler_page = Button(choose_user_page, text = "Seller", font = ("bold", 10), bg = "white", command = lambda : display_seller_Login_Register_page(choose_user_page))
     
     customer_button.place(x = 400, y = 100)
     agent_button.place(x = 400, y = 300)
@@ -390,18 +392,5 @@ def display_choose_user_page(dba):
 
     choose_user_page.mainloop()
 
-
-def main():
-    dba = mysql.connector.connect(host = "localhost", user = "root", passwd = "Hitsugaya1@", database = "ORS1")
-    agent = mysql.connector.connect(host = "localhost",user = "agent",passwd = "Agent_pass1@", database = "ORS1")
-    seller = mysql.connector.connect(host = "localhost",user = "seller",passwd = "Seller_pass1@", database = "ORS1")
-    # customer = mysql.connector.connect(host = "localhost",user = "customer",passwd = "Cus_pass1@", database = "ORS1")
-    
-    display_choose_user_page(dba)
-
-
-
-
-if __name__ == "__main__":
-    main()
+display_choose_user_page()
 

@@ -53,6 +53,8 @@ def C_Connect(CUS):
     if cred_verify(Cid,Pass,"customer",CUS) == True:
         print("login succesful")
 
+
+
     else:
         print("login failed")
 
@@ -75,6 +77,7 @@ def A_Connect(CUS):
 
     if cred_verify(Cid,Pass,"SA",CUS) == True:
         print("login succesful")
+        mode
 
     else:
         print("login failed")
