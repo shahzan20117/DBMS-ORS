@@ -89,7 +89,7 @@ CREATE TABLE `belongTo` (
 
 LOCK TABLES `belongTo` WRITE;
 /*!40000 ALTER TABLE `belongTo` DISABLE KEYS */;
-INSERT INTO `belongTo` VALUES (20,'Bottle'),(1,'Breads'),(6,'Confectionery'),(8,'Confectionery'),(3,'cookies'),(12,'Cookware'),(13,'Cookware'),(16,'Dairy'),(19,'Drinks'),(17,'Flour'),(9,'Fruit'),(10,'Fruit'),(15,'Furniture'),(14,'Meat'),(4,'Notebooks'),(11,'Nuts'),(7,'Pens'),(5,'Seasoning'),(18,'Television'),(2,'Vegetables');
+INSERT INTO `belongTo` VALUES (20,'Bottle'),(1,'Breads'),(18,'Breads'),(6,'Confectionery'),(8,'Confectionery'),(3,'cookies'),(12,'Cookware'),(13,'Cookware'),(16,'Dairy'),(19,'Drinks'),(38,'Drinks'),(17,'Flour'),(9,'Fruit'),(10,'Fruit'),(13,'Furniture'),(15,'Furniture'),(14,'Meat'),(4,'Notebooks'),(7,'Notebooks'),(11,'Nuts'),(7,'Pens'),(5,'Seasoning'),(18,'Television'),(2,'Vegetables'),(39,'Vegetables'),(40,'Vegetables'),(41,'Vegetables');
 /*!40000 ALTER TABLE `belongTo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -116,7 +116,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (2,'Delinda','Noades',50,'YFa0EV51n7Ji'),(3,'Muhammad','Brunstan',47,'NJmd8z'),(4,'Lacy','Scotchmur',4745,'aQ1zwDL'),(5,'Konstantin','Carreck',84,'B7Q8zZlPtUf'),(6,'Ines','Llewelyn',1928,'hrNuFIZNg'),(7,'Trueman','Beneyto',376,'utlHeD6GIos1'),(8,'Hewe','Karran',746,'oNWKKvEb'),(9,'Eden','Dorward',938,'JORHJu9UvN'),(10,'Uri','Davidovsky',238,'H59VSSfxB'),(11,'Wolfie','Plows',1928,'JBVShisPSvZS'),(12,'Mariele','Bonham',833,'ZBRX31'),(13,'Elfreda','Weins',382,'9kLx7A'),(14,'Oberon','Parlot',9238,'OSNvVZhQR4'),(15,'Gage','Megainey',839,'QCsGOzj1b'),(16,'Calypso','Ornils',0,'ZXOPXGpNK'),(17,'Kathleen','Librey',0,'7mYu1pXW1'),(18,'Loretta','Sowersby',98,'jlHHIo'),(19,'Idalina','Dwane',8262,'XDb3lJCuauRO'),(20,'Douglas','Keward',83,'4K9JIHL'),(45,'sdhkj','kbscj',0,'ldsvn'),(70,'s','dd',0,'ddd'),(75,'huyt','hjui',0,'password'),(77,'divyansh','singh',0,'hoog booga boo'),(78,'divyansh','singh',0,'tommy'),(79,'dd','ddd',0,'ddd'),(80,'shahzan','ahmad',0,'hunga bunga'),(81,'anas','ahmad',0,'hunga bunga'),(99,'yui','opi',0,'sdafjkb'),(123,'abc','def',0,'ghi'),(1234,'hg','ahsfd',0,'safdhjk');
+INSERT INTO `customer` VALUES (2,'Delinda','Noades',50,'YFa0EV51n7Ji'),(3,'Muhammad','Brunstan',47,'NJmd8z'),(4,'Lacy','Scotchmur',4745,'aQ1zwDL'),(5,'Konstantin','Carreck',84,'B7Q8zZlPtUf'),(6,'Ines','Llewelyn',1928,'hrNuFIZNg'),(7,'Trueman','Beneyto',376,'utlHeD6GIos1'),(8,'Hewe','Karran',746,'oNWKKvEb'),(9,'Eden','Dorward',938,'JORHJu9UvN'),(10,'Uri','Davidovsky',238,'H59VSSfxB'),(11,'Wolfie','Plows',1928,'JBVShisPSvZS'),(12,'Mariele','Bonham',833,'ZBRX31'),(13,'Elfreda','Weins',382,'9kLx7A'),(14,'Oberon','Parlot',9238,'OSNvVZhQR4'),(15,'Gage','Megainey',839,'QCsGOzj1b'),(16,'Calypso','Ornils',0,'ZXOPXGpNK'),(17,'Kathleen','Librey',0,'7mYu1pXW1'),(18,'Loretta','Sowersby',98,'jlHHIo'),(19,'Idalina','Dwane',8262,'XDb3lJCuauRO'),(20,'Douglas','Keward',83,'4K9JIHL'),(25,'temon','punba',0,'secret'),(45,'sdhkj','kbscj',0,'ldsvn'),(70,'s','dd',0,'ddd'),(75,'huyt','hjui',0,'password'),(77,'divyansh','singh',0,'hoog booga boo'),(78,'divyansh','singh',0,'tommy'),(79,'dd','ddd',0,'ddd'),(80,'shahzan','ahmad',0,'hunga bunga'),(81,'anas','ahmad',0,'hunga bunga'),(99,'yui','opi',0,'sdafjkb'),(123,'abc','def',0,'ghi'),(776,'cidhns','csna',0,'acsnlcsjk'),(1234,'hg','ahsfd',0,'safdhjk');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -128,7 +128,7 @@ DROP TABLE IF EXISTS `orders`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `orders` (
-  `orders_id` int NOT NULL,
+  `orders_id` int NOT NULL AUTO_INCREMENT,
   `place_status` varchar(40) NOT NULL,
   `delivery_status` varchar(40) NOT NULL,
   `return_status` varchar(40) DEFAULT NULL,
@@ -156,7 +156,7 @@ CREATE TABLE `orders` (
   CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`agent_id`) REFERENCES `shippingAgent` (`agent_id`),
   CONSTRAINT `orders_ibfk_3` FOREIGN KEY (`seller_id`) REFERENCES `seller` (`seller_id`),
   CONSTRAINT `orders_ibfk_4` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -246,11 +246,12 @@ DROP TABLE IF EXISTS `product`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `product` (
-  `product_id` int NOT NULL,
+  `product_id` int NOT NULL AUTO_INCREMENT,
   `product_name` varchar(100) NOT NULL,
   `curr_status` varchar(50) NOT NULL,
-  PRIMARY KEY (`product_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`product_id`),
+  UNIQUE KEY `product_name` (`product_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -259,7 +260,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (1,'Cinnamon Buns Sticky','OUT_OF_STOCK'),(2,'Tomato - Green','OUT_OF_STOCK'),(3,'Cookies Cereal Nut','IN_STOCK'),(4,'Classmate Notebook','NO_LONGER_AVAILABLE'),(5,'Herb Du Provence - Primerba','IN_STOCK'),(6,'Pastry - Cherry Danish - Mini','NO_LONGER_AVAILABLE'),(7,'Reynolds pen','IN_STOCK'),(8,'Vermacelli - Sprinkles, Assorted','IN_STOCK'),(9,'Fruit Mix - Light','IN_STOCK'),(10,'Blackberries','IN_STOCK'),(11,'Nut - Pine Nuts, Whole','OUT_OF_STOCK'),(12,'Cookware pan','IN_STOCK'),(13,'Foil Cont Round','OUT_OF_STOCK'),(14,'Quail - Jumbo Boneless','IN_STOCK'),(15,'Prashad Sofa','IN_STOCK'),(16,'Cheese - Cream Cheese','OUT_OF_STOCK'),(17,'Shiratamako - Rice Flour','NO_LONGER_AVAILABLE'),(18,'Sony LED TV','IN_STOCK'),(19,'Energy Drink - Redbull 355ml','OUT_OF_STOCK'),(20,'Tupperware Bottle','IN_STOCK');
+INSERT INTO `product` VALUES (1,'Cinnamon Buns Sticky','OUT_OF_STOCK'),(2,'Tomato - Green','OUT_OF_STOCK'),(3,'Cookies Cereal Nut','IN_STOCK'),(4,'Classmate Notebook','NO_LONGER_AVAILABLE'),(5,'Herb Du Provence - Primerba','IN_STOCK'),(6,'Pastry - Cherry Danish - Mini','NO_LONGER_AVAILABLE'),(7,'Reynolds pen','IN_STOCK'),(8,'Vermacelli - Sprinkles, Assorted','IN_STOCK'),(9,'Fruit Mix - Light','IN_STOCK'),(10,'Blackberries','IN_STOCK'),(11,'Nut - Pine Nuts, Whole','OUT_OF_STOCK'),(12,'Cookware pan','IN_STOCK'),(13,'Foil Cont Round','OUT_OF_STOCK'),(14,'Quail - Jumbo Boneless','IN_STOCK'),(15,'Prashad Sofa','IN_STOCK'),(16,'Cheese - Cream Cheese','OUT_OF_STOCK'),(17,'Shiratamako - Rice Flour','NO_LONGER_AVAILABLE'),(18,'Sony LED TV','IN_STOCK'),(19,'Energy Drink - Redbull 355ml','OUT_OF_STOCK'),(20,'Tupperware Bottle','IN_STOCK'),(38,'sprite','IN_STOCK'),(39,'Tamatar','IN_STOCK'),(40,'Aaloo','IN_STOCK'),(41,'Gajar','IN_STOCK');
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -326,7 +327,7 @@ DROP TABLE IF EXISTS `review`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `review` (
-  `review_id` int NOT NULL,
+  `review_id` int NOT NULL AUTO_INCREMENT,
   `rating` int NOT NULL,
   `review_comment` varchar(1000) DEFAULT NULL,
   `review_date` date NOT NULL,
@@ -340,7 +341,7 @@ CREATE TABLE `review` (
   CONSTRAINT `review_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON DELETE CASCADE,
   CONSTRAINT `review_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE CASCADE,
   CONSTRAINT `review_ibfk_3` FOREIGN KEY (`seller_id`) REFERENCES `seller` (`seller_id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -395,7 +396,7 @@ CREATE TABLE `seller` (
 
 LOCK TABLES `seller` WRITE;
 /*!40000 ALTER TABLE `seller` DISABLE KEYS */;
-INSERT INTO `seller` VALUES (1,'Morissette-Quigley','WORKING','7oCjO4IWlxTj','8509995211','sarmit0@cyberchimps.com'),(2,'Corwin, Lang and Adams','WORKING','yy5Nul','4604243952','stroyes1@xrea.com'),(3,'Hickle, Kunze and Little','WORKING','7gOv08','6431459636','pandrasch2@ocn.ne.jp'),(4,'Tremblay Inc','NOT_WORKING','zTjgy7mOr','5842268852','mjosiah3@go.com'),(5,'Barrows-Krajcik','WORKING','8H8ueXP','1727363379','ebampton4@symantec.com'),(6,'Baumbach-Rohan','NOT_WORKING','YD65uzZvUr','5225359353','eboutellier5@weibo.com'),(7,'Harber-Sauer','WORKING','Jt6pEL','9256512184','adammarell6@uiuc.edu'),(8,'Schuster Inc','WORKING','AJWmHNVz','4398815564','bmaccourt7@wordpress.com'),(9,'Fay Inc','WORKING','BvdpUcy1k','8958574533','kmussared8@clickbank.net'),(10,'Anderson Inc','WORKING','sQGOgU7x','1737737312','mmettricke9@lycos.com'),(11,'Kautzer, Sporer and Gulgowski','WORKING','4j55VsSbRUr','2719258150','rbilhama@nasa.gov'),(12,'Kessler-Olson','WORKING','aEa2fISV','4048190533','cperesb@eventbrite.com'),(13,'Ziemann LLC','WORKING','kVb661FsS0','1033945785','emaccaughanc@time.com'),(14,'Franecki Inc','WORKING','2DBLbjuTio','6424494691','mbaptistd@mediafire.com'),(15,'Roberts-Kohler','WORKING','R7xZA6kzF7','4759338435','zdivinae@eepurl.com'),(16,'Boyle, Roberts and Bogisich','WORKING','8vXx24ub','4262545796','mjannaschf@twitpic.com'),(17,'Parker and Sons','NOT_WORKING','6lKkCU9O','5129105246','nboolerg@ihg.com'),(18,'Miller-Ruecker','WORKING','o5Ks0Nuz','1004611761','gquaintonh@vinaora.com'),(19,'Nikolaus-Mayert','WORKING','BCbfqtoMWtxF','6141506543','mpallisteri@kickstarter.com'),(20,'Cremin and Sons','WORKING','OdgiF1','2956854314','beasomj@sogou.com'),(21,'Waters-Stroman','WORKING','T11zMFmX2B','3751635431','sfranceschellik@rakuten.co.jp'),(22,'Goodwin-Bernhard','WORKING','linU2kzP6dz','5403884349','ckerswelll@amazonaws.com'),(23,'Hamill LLC','NOT_WORKING','tPzMTCIyoEVg','8289928947','bcumberlandm@163.com'),(24,'Fay, Ryan and Macejkovic','NOT_WORKING','WSzGtyY','6807431639','lsweedn@timesonline.co.uk'),(25,'Runte LLC','WORKING','awWHBjfyadP','4125766938','mkilgallono@goodreads.com');
+INSERT INTO `seller` VALUES (1,'Morissette-Quigley','WORKING','7oCjO4IWlxTj','8509995211','sarmit0@cyberchimps.com'),(2,'Corwin, Lang and Adams','WORKING','yy5Nul','4604243952','stroyes1@xrea.com'),(3,'Hickle, Kunze and Little','WORKING','7gOv08','6431459636','pandrasch2@ocn.ne.jp'),(4,'Tremblay Inc','NOT_WORKING','zTjgy7mOr','5842268852','mjosiah3@go.com'),(5,'Barrows-Krajcik','WORKING','8H8ueXP','1727363379','ebampton4@symantec.com'),(6,'Baumbach-Rohan','NOT_WORKING','YD65uzZvUr','5225359353','eboutellier5@weibo.com'),(7,'Harber-Sauer','WORKING','Jt6pEL','9256512184','adammarell6@uiuc.edu'),(8,'Schuster Inc','WORKING','AJWmHNVz','4398815564','bmaccourt7@wordpress.com'),(9,'Fay Inc','WORKING','BvdpUcy1k','8958574533','kmussared8@clickbank.net'),(10,'Anderson Inc','WORKING','sQGOgU7x','1737737312','mmettricke9@lycos.com'),(11,'Kautzer, Sporer and Gulgowski','WORKING','4j55VsSbRUr','2719258150','rbilhama@nasa.gov'),(12,'Kessler-Olson','WORKING','aEa2fISV','4048190533','cperesb@eventbrite.com'),(13,'Ziemann LLC','WORKING','kVb661FsS0','1033945785','emaccaughanc@time.com'),(14,'Franecki Inc','WORKING','2DBLbjuTio','6424494691','mbaptistd@mediafire.com'),(15,'Roberts-Kohler','WORKING','R7xZA6kzF7','99','zdivinae@eepurl.com'),(16,'Boyle, Roberts and Bogisich','WORKING','8vXx24ub','4262545796','mjannaschf@twitpic.com'),(17,'Parker and Sons','NOT_WORKING','6lKkCU9O','5129105246','nboolerg@ihg.com'),(18,'Miller-Ruecker','WORKING','o5Ks0Nuz','1004611761','gquaintonh@vinaora.com'),(19,'Nikolaus-Mayert','WORKING','BCbfqtoMWtxF','6141506543','mpallisteri@kickstarter.com'),(20,'Cremin and Sons','WORKING','OdgiF1','2956854314','beasomj@sogou.com'),(21,'Waters-Stroman','WORKING','T11zMFmX2B','3751635431','sfranceschellik@rakuten.co.jp'),(22,'Goodwin-Bernhard','WORKING','linU2kzP6dz','5403884349','ckerswelll@amazonaws.com'),(23,'Hamill LLC','NOT_WORKING','tPzMTCIyoEVg','8289928947','bcumberlandm@163.com'),(24,'Fay, Ryan and Macejkovic','NOT_WORKING','WSzGtyY','6807431639','lsweedn@timesonline.co.uk'),(25,'Runte LLC','WORKING','awWHBjfyadP','4125766938','mkilgallono@goodreads.com'),(55,'seller1','WORKING','pass','1234567890','shahzan1@joojle.com'),(89,'seller2','WORKING','password2','78','seller2@hmail.com'),(765,'seller12','WORKING','passwordMania','876578697','seller@hmail.com');
 /*!40000 ALTER TABLE `seller` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -426,7 +427,7 @@ CREATE TABLE `sells` (
 
 LOCK TABLES `sells` WRITE;
 /*!40000 ALTER TABLE `sells` DISABLE KEYS */;
-INSERT INTO `sells` VALUES (1,1,105,1.0,1,0.00),(2,2,283,0.0,0,0.00),(3,3,338,0.0,0,0.50),(5,5,527,2.0,5,0.50),(7,7,739,0.0,7,0.70),(8,8,893,0.0,8,0.00),(9,9,9983,4.0,9,0.00),(10,10,1098,0.0,10,0.00),(11,11,105,0.0,0,0.00),(12,12,283,0.0,4,0.00),(13,13,338,0.0,0,0.60),(14,14,438,0.0,9,0.00),(15,15,527,2.5,5,0.50),(16,16,6934,0.0,0,0.00),(18,18,893,0.0,8,0.00),(19,19,9983,0.0,0,0.00),(20,20,1098,0.0,10,0.00);
+INSERT INTO `sells` VALUES (1,1,105,1.0,1,0.00),(2,2,283,0.0,0,0.00),(2,3,45,0.0,3,0.00),(3,3,338,0.0,0,0.50),(5,5,527,2.0,5,0.50),(7,7,739,0.0,7,0.70),(8,8,893,0.0,8,0.00),(9,9,9983,4.0,9,0.00),(10,10,1098,0.0,10,0.00),(11,11,105,0.0,0,0.00),(12,12,283,0.0,4,0.00),(13,13,338,0.0,0,0.60),(14,14,438,0.0,9,0.00),(15,10,100,0.0,100,0.40),(15,15,527,2.5,5,0.50),(15,18,100,0.0,100,0.40),(15,41,100,0.0,100,0.40),(16,16,6934,0.0,0,0.00),(18,18,893,0.0,8,0.00),(19,19,9983,0.0,0,0.00),(20,20,1098,0.0,10,0.00),(55,4,300,0.0,200,0.42),(55,7,10,0.0,1000,0.59),(55,10,500,0.0,200,0.50),(55,12,600,0.0,500,0.30),(55,13,9001,0.0,400,0.15),(55,39,500,0.0,100,0.30);
 /*!40000 ALTER TABLE `sells` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -726,4 +727,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-21 22:31:44
+-- Dump completed on 2022-04-24 14:58:37
