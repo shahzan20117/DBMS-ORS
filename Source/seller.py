@@ -171,8 +171,10 @@ def update_seller(Seller,seller_id, seller_name, curr_status, seller_phone, sell
 
 def delete_seller(Seller,seller_id):
     cursor = Seller.cursor()
-    cursor.execute("delete from seller where seller_id = " + str(seller_id))
+    cursor.execute("UPDATE seller SET curr_status = '{}' WHERE seller_id = '{}'".format("NOT_WORKING", seller_id) )
     Seller.commit()
+    messageBox.showinfo("success", "account deleted")
+
 
 
 #################### LISTING TABLE MAN. ##############################################
@@ -574,4 +576,3 @@ def main(seller_login_page, dba, seller_id):
 ##            
 ##            
 ##            
-              
