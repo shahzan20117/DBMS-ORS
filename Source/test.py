@@ -2,11 +2,47 @@ from tkinter import *
 import tkinter.messagebox as messageBox
 import mysql.connector
 import seller
+import customer
+import re
+
+
+
+def check_string_is_float(string_x, decimals):
+    if (decimals == 2):
+        regex = "[0]{1}\.[0-9]{1}|[0]{1}\.[0-9]{2}"
+        if (re.fullmatch(regex, string_x)):
+            return True
+        else:
+            return False
+    elif(decimals == 1):
+        regex = "[0]{1}\.[0-9]{1}"
+        if (re.fullmatch(regex, string_x)):
+            return True
+        else:
+            return False
+
+
+def check_string_is_number(string_x):
+    regex = "[0-9]+"
+    if(re.fullmatch(regex, string_x)):
+        return True
+    else:
+        return False
+
+def check_email_format(email):
+    regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+    if(re.fullmatch(regex, email)):
+        return True
+    else:
+        return False
+
+
+
 
 def confirm_customer_login(dba, Login_page, id, password):
     if (id == "" or password == ""):
         messageBox.showinfo("error", "must fill all the fields")
-    elif (not id.isdigit()):
+    elif (not check_string_is_number(id)):
         messageBox.showinfo("error", "ids can only be numbers")
     elif (len(id) != len(str(int(id)))):
         messageBox.showinfo("error", "ids cannot have leading zeroes")
@@ -17,6 +53,7 @@ def confirm_customer_login(dba, Login_page, id, password):
         print(possible_login_credentials)
         if (int(id), password) in possible_login_credentials:
             messageBox.showinfo("Log in successfull", "YAY!")
+            customer.main(dba, Login_page, id)
         else:
             messageBox.showinfo("Log in Unsuccessful", "wrong id or password")
 
@@ -25,12 +62,10 @@ def confirm_customer_login(dba, Login_page, id, password):
 def register_customer_account(dba, Register_page, first_name, last_name, password, id):
     if (first_name == "" or last_name == "" or password == "" or id == ""):
         messageBox.showinfo("error", "must fill all the fields")
-    elif (not id.isdigit()):
+    elif (not check_string_is_number(id)):
         messageBox.showinfo("error", "id must be numeric")
     elif (len(id) != len(str(int(id)))):
         messageBox.showinfo("error", "no leading zeroes allowed in id")
-
-
     else:
         int_id = int(id)
         cursor = dba.cursor()
@@ -140,12 +175,15 @@ def display_customer_Login_Register_page(dba, choose_user_page):
 def register_seller_account(dba, seller_register_page, seller_name, seller_email, seller_password, seller_phone, seller_id ):
     if (seller_name == "" or seller_email == "" or seller_password == "" or seller_phone == "" or seller_id == ""):
         messageBox.showinfo("error", "must fill all the fields")
-    elif (not seller_id.isdigit()):
+    elif (not check_string_is_number(seller_id)):
         messageBox.showinfo("error", "id can only be numbers")
     elif ( len(seller_id) != len(str(int(seller_id))) ):
         messageBox.showinfo("error", "id cannot have leading zeroes")
-    elif ( not seller_phone.isdigit()):
+    elif ( not check_string_is_number(seller_phone)):
         messageBox.showinfo("error", "phone number should only be numbers ")
+    elif ( not check_email_format(seller_email)):
+        messageBox.showinfo("error", "email not valid ")
+
 
     else:
         int_seller_id = int(seller_id)
@@ -220,7 +258,7 @@ def go_to_seller_register_page(dba, Loin_Register_page):
 def confirm_seller_login(dba, seller_login_page, seller_id, seller_password):
     if ( seller_id == "" or seller_password == "" ):
         messageBox.showinfo("error", "must fill all the fields")
-    elif (not seller_id.isdigit()):
+    elif (not check_string_is_number(seller_id)):
         messageBox.showinfo("error", "ids can only be numbers")
     elif ( len(seller_id) != len(str(int(seller_id)))):
         messageBox.showinfo("error", "ids cannot have leading zeroes")

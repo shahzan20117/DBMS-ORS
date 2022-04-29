@@ -572,7 +572,7 @@ def main(seller_login_page, dba, seller_id):
 ## case2: the product name doesn't exist in product table:
 ##            add product to product table and add (product_id, subcategory) to belongs_to table
 ##
-##            
+##          
 ##            
 ##            
 ##            

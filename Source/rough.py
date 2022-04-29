@@ -20,5 +20,3 @@ import re
 #     print("Not Valid")
 # x = "1.4545"
 # print(type((float(x))))
-x = ('36',)
-print(type(x[0]))
